@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clouvera - Automatización Inteligente para Empresas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Outfit', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        'clouvera': {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Outfit', system-ui, sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .bg-grid {
+            background-image: 
+                linear-gradient(to right, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.25);
+        }
+        
+        @keyframes slide-in {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-slide-in {
+            animation: slide-in 0.8s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .delay-4 { animation-delay: 0.4s; opacity: 0; }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">C</span>
+                    </div>
+                    <span class="text-2xl font-bold gradient-text">Clouvera</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#soluciones" class="text-gray-700 hover:text-blue-600 transition font-medium">Soluciones</a>
+                    <a href="#paquetes" class="text-gray-700 hover:text-blue-600 transition font-medium">Paquetes</a>
+                    <a href="#beneficios" class="text-gray-700 hover:text-blue-600 transition font-medium">Beneficios</a>
+                    <a href="#contacto" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-lg hover:shadow-lg transition font-medium">
+                        Contactar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 bg-gradient-to-br from-blue-50 via-white to-purple-50 bg-grid overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="animate-slide-in">
+                        <div class="inline-block px-4 py-1.5 bg-blue-100 rounded-full mb-6">
+                            <span class="text-blue-700 font-medium text-sm">🚀 Automatización de nueva generación</span>
+                        </div>
+                        <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6">
+                            Automatización
+                            <span class="gradient-text block">Inteligente</span>
+                            para Empresas Modernas
+                        </h1>
+                        <p class="text-xl text-gray-600 leading-relaxed">
+                            Sistemas que trabajan 24/7 para capturar leads, responder clientes y optimizar operaciones. 
+                            <span class="font-semibold text-gray-900">De $300 a $1,200/mes.</span>
+                        </p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 animate-slide-in delay-1">
+                        <a href="#paquetes" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl hover:shadow-2xl transition font-semibold text-lg text-center">
+                            Ver Paquetes
+                        </a>
+                        <a href="#contacto" class="bg-white border-2 border-gray-200 text-gray-900 px-8 py-4 rounded-xl hover:border-blue-600 hover:shadow-lg transition font-semibold text-lg text-center">
+                            Agendar Demo
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-8 pt-4 animate-slide-in delay-2">
+                        <div>
+                            <div class="text-3xl font-bold gradient-text">100%</div>
+                            <div class="text-sm text-gray-600">Cloud</div>
+                        </div>
+                        <div class="w-px h-12 bg-gray-300"></div>
+                        <div>
+                            <div class="text-3xl font-bold gradient-text">24/7</div>
+                            <div class="text-sm text-gray-600">Automatizado</div>
+                        </div>
+                        <div class="w-px h-12 bg-gray-300"></div>
+                        <div>
+                            <div class="text-3xl font-bold gradient-text">3-5x</div>
+                            <div class="text-sm text-gray-600">ROI</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative animate-slide-in delay-3">
+                    <div class="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl p-8 shadow-2xl animate-float">
+                        <div class="bg-white rounded-2xl p-6 space-y-4">
+                            <div class="flex items-center justify-between pb-4 border-b">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                    <span class="font-semibold">Sistema Activo</span>
+                                </div>
+                                <span class="font-mono text-sm text-gray-500">LIVE</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3 bg-blue-50 p-3 rounded-lg">
+                                    <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-sm">✓</div>
+                                    <div class="flex-1">
+                                        <div class="font-medium text-sm">Nuevo Lead Capturado</div>
+                                        <div class="text-xs text-gray-500">Juan Pérez - Laredo TX</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 bg-purple-50 p-3 rounded-lg">
+                                    <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center text-white text-sm">💬</div>
+                                    <div class="flex-1">
+                                        <div class="font-medium text-sm">WhatsApp Respondido</div>
+                                        <div class="text-xs text-gray-500">Respuesta automática enviada</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 bg-green-50 p-3 rounded-lg">
+                                    <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center text-white text-sm">📊</div>
+                                    <div class="flex-1">
+                                        <div class="font-medium text-sm">Reporte Generado</div>
+                                        <div class="text-xs text-gray-500">Enviado a tu email</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluciones Section -->
+    <section id="soluciones" class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="gradient-text">3 Sistemas</span> que Transforman tu Negocio
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Automatización inteligente que trabaja mientras duermes
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Sistema 1 -->
+                <div class="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-100 rounded-2xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Lead Engine</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Captura leads automáticamente desde tu web, Facebook, Instagram. Notificaciones inmediatas y seguimiento automatizado.
+                    </p>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-600 font-bold">✓</span>
+                            <span>Captura desde múltiples fuentes</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-600 font-bold">✓</span>
+                            <span>Notificaciones WhatsApp + Email</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-600 font-bold">✓</span>
+                            <span>Seguimiento automático día 3 y 7</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-600 font-bold">✓</span>
+                            <span>Alertas de leads olvidados</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sistema 2 -->
+                <div class="bg-gradient-to-br from-purple-50 to-white border-2 border-purple-100 rounded-2xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-400 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">WhatsApp Assistant</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Asistente con IA que responde 24/7, califica leads y escala a tu equipo solo cuando es necesario.
+                    </p>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-600 font-bold">✓</span>
+                            <span>Respuestas automáticas 24/7</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-600 font-bold">✓</span>
+                            <span>10-15 FAQs predefinidas</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-600 font-bold">✓</span>
+                            <span>Calificación inteligente de leads</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-600 font-bold">✓</span>
+                            <span>Historial de conversaciones</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sistema 3 -->
+                <div class="bg-gradient-to-br from-green-50 to-white border-2 border-green-100 rounded-2xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-600 to-green-400 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Ops Alerts</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Monitoreo inteligente que alerta sobre leads sin respuesta, pagos vencidos y tareas críticas.
+                    </p>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-600 font-bold">✓</span>
+                            <span>Monitoreo cada hora</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-600 font-bold">✓</span>
+                            <span>Alertas configurables</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-600 font-bold">✓</span>
+                            <span>Dashboard de alertas activas</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-600 font-bold">✓</span>
+                            <span>Reportes diarios automáticos</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paquetes Section -->
+    <section id="paquetes" class="py-20 px-6 bg-gradient-to-br from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Elige tu <span class="gradient-text">Paquete</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Desde $300/mes hasta soluciones enterprise de $1,200/mes
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter -->
+                <div class="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-blue-600 transition">
+                    <div class="mb-6">
+                        <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">Starter</div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-5xl font-bold">$300</span>
+                            <span class="text-gray-500">/mes</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">Perfecto para comenzar a automatizar</p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-blue-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="font-medium">Lead Engine completo</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-blue-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Captura automática de leads</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-blue-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Notificaciones inmediatas</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-blue-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Seguimiento automatizado</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-blue-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Soporte por email</span>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="block w-full bg-gray-900 text-white text-center py-3 rounded-xl hover:bg-gray-800 transition font-semibold">
+                        Comenzar
+                    </a>
+                </div>
+
+                <!-- Pro - Destacado -->
+                <div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white relative scale-105 shadow-2xl">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
+                        MÁS POPULAR
+                    </div>
+                    <div class="mb-6">
+                        <div class="text-sm font-semibold text-blue-100 uppercase tracking-wide mb-2">Pro</div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-5xl font-bold">$650</span>
+                            <span class="text-blue-100">/mes</span>
+                        </div>
+                    </div>
+                    <p class="text-blue-100 mb-6">Todo lo que necesitas para escalar</p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-yellow-300 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="font-medium">Todo de Starter +</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-yellow-300 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="font-medium">WhatsApp Assistant con IA</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-yellow-300 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Respuestas 24/7</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-yellow-300 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="font-medium">Ops Alerts</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-yellow-300 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Monitoreo inteligente</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-yellow-300 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Soporte prioritario</span>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="block w-full bg-white text-blue-600 text-center py-3 rounded-xl hover:bg-gray-100 transition font-semibold">
+                        Elegir Pro
+                    </a>
+                </div>
+
+                <!-- Logistics -->
+                <div class="bg-white border-2 border-gray-200 rounded-2xl p-8 hover:border-purple-600 transition">
+                    <div class="mb-6">
+                        <div class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">Logistics</div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-5xl font-bold">$1,200</span>
+                            <span class="text-gray-500">/mes</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">Para empresas de logística e importación</p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-purple-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="font-medium">Todo de Pro +</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-purple-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="font-medium">Módulo Import/Export</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-purple-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Control de documentación</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-purple-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Tracking de cargas</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-purple-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Alertas de vencimientos</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-purple-600 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Soporte dedicado</span>
+                        </div>
+                    </div>
+                    <a href="#contacto" class="block w-full bg-gray-900 text-white text-center py-3 rounded-xl hover:bg-gray-800 transition font-semibold">
+                        Contactar Ventas
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section id="beneficios" class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    ¿Por qué <span class="gradient-text">Clouvera</span>?
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">⚡</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Implementación Rápida</h3>
+                    <p class="text-gray-600 text-sm">En funcionamiento en 1-2 semanas</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">🎯</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">ROI Comprobado</h3>
+                    <p class="text-gray-600 text-sm">3-5x retorno en 3-6 meses</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">🌎</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Local en Texas</h3>
+                    <p class="text-gray-600 text-sm">Laredo, San Antonio, McAllen, El Paso</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">🤝</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Soporte Dedicado</h3>
+                    <p class="text-gray-600 text-sm">Equipo bilingüe español/inglés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                ¿Listo para Automatizar tu Negocio?
+            </h2>
+            <p class="text-xl mb-8 text-blue-100">
+                Agenda una demo gratuita de 30 minutos y descubre cómo podemos ayudarte
+            </p>
+            <a href="#contacto" class="inline-block bg-white text-blue-600 px-10 py-4 rounded-xl hover:bg-gray-100 transition font-bold text-lg shadow-2xl">
+                Agendar Demo Gratuita
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contacto" class="py-20 px-6 bg-white">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Contáctanos</h2>
+                <p class="text-gray-600">Completa el formulario y te responderemos en menos de 24 horas</p>
+            </div>
+            
+            <form id="contactForm" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nombre Completo *</label>
+                        <input type="text" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition" placeholder="Juan Pérez">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                        <input type="email" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition" placeholder="juan@empresa.com">
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Teléfono *</label>
+                        <input type="tel" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition" placeholder="(956) 123-4567">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Empresa</label>
+                        <input type="text" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition" placeholder="Mi Empresa S.A.">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Paquete de Interés</label>
+                    <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition">
+                        <option>Selecciona un paquete</option>
+                        <option>Starter - $300/mes</option>
+                        <option>Pro - $650/mes</option>
+                        <option>Logistics - $1,200/mes</option>
+                        <option>No estoy seguro</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Mensaje *</label>
+                    <textarea required rows="5" class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none transition" placeholder="Cuéntanos sobre tu negocio y cómo podemos ayudarte..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl hover:shadow-2xl transition font-bold text-lg">
+                    Enviar Mensaje
+                </button>
+
+                <div id="formMessage" class="hidden p-4 rounded-lg text-center font-medium"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">C</span>
+                        </div>
+                        <span class="text-2xl font-bold">Clouvera</span>
+                    </div>
+                    <p class="text-gray-400">Automatización inteligente para empresas modernas</p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Soluciones</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Lead Engine</a></li>
+                        <li><a href="#" class="hover:text-white transition">WhatsApp Assistant</a></li>
+                        <li><a href="#" class="hover:text-white transition">Ops Alerts</a></li>
+                        <li><a href="#" class="hover:text-white transition">Import/Export</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Paquetes</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#paquetes" class="hover:text-white transition">Starter - $300/mes</a></li>
+                        <li><a href="#paquetes" class="hover:text-white transition">Pro - $650/mes</a></li>
+                        <li><a href="#paquetes" class="hover:text-white transition">Logistics - $1,200/mes</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Contacto</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📍 Laredo, Texas</li>
+                        <li>📧 info@clouvera.com</li>
+                        <li>📱 (956) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 Clouvera. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const messageDiv = document.getElementById('formMessage');
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            
+            // Simular envío (aquí conectarías con tu API)
+            submitButton.textContent = 'Enviando...';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                messageDiv.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+                messageDiv.classList.add('bg-green-100', 'text-green-700');
+                messageDiv.textContent = '✅ ¡Mensaje enviado! Te contactaremos pronto.';
+                
+                submitButton.textContent = 'Enviar Mensaje';
+                submitButton.disabled = false;
+                
+                e.target.reset();
+                
+                // Ocultar mensaje después de 5 segundos
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 5000);
+            }, 1500);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
